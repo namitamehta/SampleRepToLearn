@@ -78,8 +78,9 @@ export class CRUDComponent extends Component {
     loadData(a: any) {
         console.log(a);
         this.products[0].id = 3;
-        this.setState({ 
-            products : this.products
+
+        this.setState({
+            products: this.products
         })
     }
 
@@ -102,9 +103,9 @@ export class CRUDComponent extends Component {
                             validationSchema={this.schema}
                             onSubmit={values => {
                                 // same shape as initial values
-                                this.products.push(values)                                   
+                                this.products.push(values)
                                 this.setState({
-                                    products : this.products
+                                    products: this.products
                                 });
                                 console.log(this.products);
                                 console.log(this.schema);
