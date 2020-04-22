@@ -128,9 +128,16 @@ export default function MaterialGridWithPagination() {
     }, []);
 
     const handleClick = (event: React.MouseEvent<unknown>, row: any) => {
-        //    alert(JSON.stringify(row));
-        setModalContent(JSON.stringify(row));
-        setOpen(true);
+         if (row) {
+              const a = {
+                    Title: row.title,
+                    url: row.url,
+                    createdAt: row.created_at,
+                    Author: row.author
+                };
+             setModalContent(JSON.stringify(a));
+             setOpen(true);
+         }       
     };
 
     const body = (
@@ -157,7 +164,7 @@ export default function MaterialGridWithPagination() {
         //     alert(event.target.value);
     }
 
-    const handleFilterTitle = (event : React.ChangeEvent<HTMLInputElement>) => {
+    const handleFilterTitle = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitleFilter(event.target.value);
     }
 
@@ -177,13 +184,13 @@ export default function MaterialGridWithPagination() {
                             <TableRow>
                                 <StyledTableCell>
                                     Title
-                                   <input type="text" className="xs m-2 col-md-4" 
-                                   placeholder="Title" value={titleFilter} onChange={handleFilterTitle}></input>
+                                   <input type="text" className="xs m-2 col-md-4"
+                                        placeholder="Title" value={titleFilter} onChange={handleFilterTitle}></input>
                                 </StyledTableCell>
                                 <StyledTableCell align="left" >URL</StyledTableCell>
                                 <StyledTableCell align="left">Created At
                                 <input type="text" className="xs m-2 col-md-4"
-                                placeholder="Created At" value={createAtFilter} onChange={handleFilterCreateAt} ></input>
+                                        placeholder="Created At" value={createAtFilter} onChange={handleFilterCreateAt} ></input>
                                 </StyledTableCell>
                                 <StyledTableCell align="left">Author</StyledTableCell>
                             </TableRow>
@@ -193,7 +200,7 @@ export default function MaterialGridWithPagination() {
                                 filteredRows.map((row) => {  // rows
                                     return (
                                         // key={row.code}
-                                        <TableRow hover role="checkbox" tabIndex={-1}
+                                        <TableRow hover tabIndex={-1}
                                             onClick={(event) => handleClick(event, row)}>
                                             {columns.map((column) => {
                                                 const value = row[column.id];

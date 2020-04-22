@@ -110,8 +110,6 @@ export default function Assignment3() {
                                     </StyledTableCell>
                                     <StyledTableCell align="right">{row.population}</StyledTableCell>
                                      <StyledTableCell align="right">{row.latlng}</StyledTableCell>
-                                   {/* <StyledTableCell align="right">{row.carbs}</StyledTableCell>
-                                    <StyledTableCell align="right">{row.protein}</StyledTableCell> */}
                                 </StyledTableRow>
                             ))}
                         </TableBody>
